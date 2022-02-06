@@ -1,8 +1,10 @@
+import { hash } from 'bcrypt';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import ICreateUserDTO from '../dtos/ICreateUserDTO';
-import { UsersRepository } from '../infra/typeorm/repositories/UsersRepository';
 import { IUsersRepository } from '../repositories/IUsersRepository';
+import { CustomException } from '../../shared/errors/custom.exception';
+import { UsersRepository } from '../infra/typeorm/repositories/users.repository';
 
 @Injectable()
 export class CreateUserService {
@@ -15,7 +17,15 @@ export class CreateUserService {
     const userAlreadyExists = await this.usersRepository.findByEmail(email);
 
     if (userAlreadyExists) {
-      throw new Error('User already exists');
+      throw new CustomException('User already exists');
     }
+
+    const passwordHash = await hash(password, 8);
+
+    await this.usersRepository.createUser({
+      email,
+      name,
+      password: passwordHash,
+    });
   }
 }

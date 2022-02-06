@@ -6,7 +6,7 @@
   "password": "postgres",
   "database": "library",
   "logging": true,
-  "entities": ["./src/**/entities/*.ts"],
+  "entities": ["./src/**/**/entities/*.ts"],
   "migrations": ["./src/shared/infra/typeorm/migrations/*.ts"],
   "cli": {
     "migrationsDir": "./src/shared/infra/typeorm/migrations"

@@ -1,17 +1,18 @@
+import { randomUUID } from 'crypto';
+
 import {
   Column,
   CreateDateColumn,
   Entity,
   JoinColumn,
   ManyToOne,
-  PrimaryGeneratedColumn,
+  PrimaryColumn,
 } from 'typeorm';
-
-import { User } from './User';
+import { User } from './user.entity';
 
 @Entity('users_tokens')
 export class UserToken {
-  @PrimaryGeneratedColumn()
+  @PrimaryColumn()
   id: string;
 
   @Column()
@@ -31,4 +32,10 @@ export class UserToken {
 
   @CreateDateColumn()
   created_at: Date;
+
+  constructor() {
+    if (!this.id) {
+      this.id = randomUUID();
+    }
+  }
 }
