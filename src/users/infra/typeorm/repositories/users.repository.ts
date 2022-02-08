@@ -1,7 +1,7 @@
 import { EntityRepository, Repository } from 'typeorm';
 
 import { User } from '../entities/user.entity';
-import ICreateUserDTO from '../../../dtos/ICreateUserDTO';
+import { ICreateUserDTO } from '../../../dtos/ICreateUserDTO';
 import { IUsersRepository } from '../../../repositories/IUsersRepository';
 
 @EntityRepository(User)

@@ -1,7 +1,7 @@
 import { hash } from 'bcrypt';
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import ICreateUserDTO from '../dtos/ICreateUserDTO';
+import { ICreateUserDTO } from '../dtos/ICreateUserDTO';
 import { IUsersRepository } from '../repositories/IUsersRepository';
 import { CustomException } from '../../shared/errors/custom.exception';
 import { UsersRepository } from '../infra/typeorm/repositories/users.repository';
@@ -17,6 +17,13 @@ export class CreateUserService {
     const userAlreadyExists = await this.usersRepository.findByEmail(email);
 
     if (userAlreadyExists) {
+      throw new HttpException(
+        {
+          status: HttpStatus.FORBIDDEN,
+          error: 'This is a custom message',
+        },
+        HttpStatus.FORBIDDEN,
+      );
       throw new CustomException('User already exists');
     }
 
