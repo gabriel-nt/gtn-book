@@ -8,7 +8,7 @@ export class UsersController {
 
   @Post('/')
   @HttpCode(201)
-  create(@Body() data: ICreateUserDTO): void {
-    this.createUserService.execute(data);
+  async create(@Body() data: ICreateUserDTO): Promise<void> {
+    await this.createUserService.execute(data);
   }
 }

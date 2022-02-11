@@ -38,8 +38,6 @@ export class UsersRepository
       id,
     });
 
-    console.log(user);
-
     await this.save(user);
   }
 }
