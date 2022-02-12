@@ -7,3 +7,4 @@ tmp/
 temp/
 
 /local.env
+/.env

@@ -10,15 +10,18 @@ import { HttpAdapterHost } from '@nestjs/core';
 export class AllExceptionsFilter implements ExceptionFilter {
   constructor(private readonly httpAdapterHost: HttpAdapterHost) {}
 
-  catch(exception: HttpException, host: ArgumentsHost): void {
+  catch(exception: any, host: ArgumentsHost): void {
     const { httpAdapter } = this.httpAdapterHost;
+    const isHttpException = exception instanceof HttpException;
 
     const ctx = host.switchToHttp();
-    const httpStatus = exception.getStatus();
+    const httpStatus = isHttpException ? exception.getStatus() : 500;
 
     const responseBody = {
       statusCode: httpStatus,
-      message: exception.getResponse(),
+      message: isHttpException
+        ? exception.getResponse()
+        : 'Internal Server Error',
     };
 
     httpAdapter.reply(ctx.getResponse(), responseBody, httpStatus);
