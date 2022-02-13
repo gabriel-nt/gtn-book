@@ -11,7 +11,7 @@ import {
 import { User } from './user.entity';
 
 @Entity('users_tokens')
-export class UserToken {
+export class UserTokens {
   @PrimaryColumn()
   id: string;
 
