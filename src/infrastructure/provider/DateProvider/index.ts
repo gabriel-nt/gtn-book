@@ -1,9 +1,10 @@
-import { container } from 'tsyringe';
+import { Module } from '@nestjs/common';
 
-import { IDateProvider } from './IDateProvider';
 import { DayjsDateProvider } from './implementations/DayjsDateProvider';
 
-container.registerSingleton<IDateProvider>(
-  'DayjsDateProvider',
-  DayjsDateProvider,
-);
+@Module({
+  controllers: [],
+  providers: [DayjsDateProvider],
+  exports: [DayjsDateProvider],
+})
+export class DateProviderModule {}

@@ -2,7 +2,7 @@ import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
 
 import auth from '../../../../infrastructure/config/auth/auth';
-import { HttpException, Injectable } from '@nestjs/common';
+import { HttpException, Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { UsersRepository } from '../infra/typeorm/repositories/users.repository';
 import { IUsersRepository } from '../repositories/IUsersRepository';
@@ -10,15 +10,7 @@ import { UsersTokensRepository } from '../infra/typeorm/repositories/usersTokens
 import { IUsersTokensRepository } from '../repositories/IUsersTokensRepository';
 import { IDateProvider } from '../../../../infrastructure/provider/DateProvider/IDateProvider';
 import { IAuthenticateUserDTO } from '../dtos/IAuthenticateUserDTO';
-
-interface IResponse {
-  user: {
-    name: string;
-    email: string;
-  };
-  token: string;
-  refresh_token: string;
-}
+import { IResponse } from '../dtos/IResponseAuthenticate';
 
 @Injectable()
 class AuthenticateUserService {

@@ -1,8 +1,9 @@
-import { Repository } from 'typeorm';
+import { EntityRepository, Repository } from 'typeorm';
 import { ICreateUserTokenDTO } from '../../../dtos/ICreateUserTokenDTO';
 import { IUsersTokensRepository } from '../../../repositories/IUsersTokensRepository';
 import { UserTokens } from '../entities/usersTokens.entity';
 
+@EntityRepository(UserTokens)
 class UsersTokensRepository
   extends Repository<UserTokens>
   implements IUsersTokensRepository
