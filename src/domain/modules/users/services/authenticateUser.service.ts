@@ -8,9 +8,9 @@ import { UsersRepository } from '../infra/typeorm/repositories/users.repository'
 import { IUsersRepository } from '../repositories/IUsersRepository';
 import { UsersTokensRepository } from '../infra/typeorm/repositories/usersTokens.repository';
 import { IUsersTokensRepository } from '../repositories/IUsersTokensRepository';
-import { IDateProvider } from '../../../../infrastructure/provider/DateProvider/IDateProvider';
 import { IAuthenticateUserDTO } from '../dtos/IAuthenticateUserDTO';
 import { IResponse } from '../dtos/IResponseAuthenticate';
+import { DayjsDateProvider } from '../../../../infrastructure/provider/DateProvider/implementations/DayjsDateProvider';
 
 @Injectable()
 class AuthenticateUserService {
@@ -21,7 +21,7 @@ class AuthenticateUserService {
     @InjectRepository(UsersTokensRepository)
     private usersTokensRepository: IUsersTokensRepository,
 
-    private dateProvider: IDateProvider,
+    private dateProvider: DayjsDateProvider,
   ) {}
 
   async execute({ email, password }: IAuthenticateUserDTO): Promise<IResponse> {

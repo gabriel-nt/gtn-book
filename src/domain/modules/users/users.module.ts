@@ -8,6 +8,7 @@ import { UsersRepository } from './infra/typeorm/repositories/users.repository';
 import { UsersTokensRepository } from './infra/typeorm/repositories/usersTokens.repository';
 import { AuthenticateUserService } from './services/authenticateUser.service';
 import { CreateUserService } from './services/createUser.service';
+import { RefreshTokenService } from './services/refreshToken.service';
 
 @Module({
   imports: [
@@ -15,6 +16,6 @@ import { CreateUserService } from './services/createUser.service';
     TypeOrmModule.forFeature([User, UsersRepository, UsersTokensRepository]),
   ],
   controllers: [UsersController, AuthenticateController],
-  providers: [CreateUserService, AuthenticateUserService],
+  providers: [CreateUserService, AuthenticateUserService, RefreshTokenService],
 })
 export class UsersModule {}

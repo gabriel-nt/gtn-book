@@ -17,6 +17,8 @@ export class AllExceptionsFilter implements ExceptionFilter {
     const ctx = host.switchToHttp();
     const httpStatus = isHttpException ? exception.getStatus() : 500;
 
+    console.log(exception);
+
     const responseBody = {
       statusCode: httpStatus,
       message: isHttpException
