@@ -1,19 +1,13 @@
 import { randomUUID } from 'crypto';
 import { Column, CreateDateColumn, Entity, PrimaryColumn } from 'typeorm';
 
-@Entity('users')
-export class User {
+@Entity('categories')
+export class Category {
   @PrimaryColumn()
   id: string;
 
   @Column()
-  name: string;
-
-  @Column()
-  email: string;
-
-  @Column()
-  password: string;
+  title: string;
 
   @CreateDateColumn()
   created_at: Date;
