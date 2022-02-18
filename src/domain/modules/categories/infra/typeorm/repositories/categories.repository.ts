@@ -8,6 +8,12 @@ export class CategoriesRepository
   extends Repository<Category>
   implements ICategoriesRepository
 {
+  async findAll(): Promise<Category[]> {
+    const categories = await this.find();
+
+    return categories;
+  }
+
   async findById(id: string): Promise<Category> {
     const category = await this.findOne(id);
 
