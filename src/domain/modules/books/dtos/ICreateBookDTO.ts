@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsNotEmpty, IsObject, IsString } from 'class-validator';
 
 export class ICreateBookDTO {
   @IsString()
@@ -21,7 +21,14 @@ export class ICreateBookDTO {
   @IsNotEmpty()
   category_id: string;
 
-  @IsString()
+  @IsObject()
   @IsNotEmpty()
-  additional_info: string;
+  additional_info: {
+    isbn10: string;
+    isbn13: string;
+    language: string;
+    pageCount: number;
+    publisher: string;
+    published: number;
+  };
 }

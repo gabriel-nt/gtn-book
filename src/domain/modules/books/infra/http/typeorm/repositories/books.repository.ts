@@ -1,5 +1,5 @@
-import { ICreateBookDTO } from 'domain/modules/books/dtos/ICreateBookDTO';
-import { IBooksRepository } from 'domain/modules/books/repositories/IBooksRepository';
+import { ICreateBookDTO } from '../../../../dtos/ICreateBookDTO';
+import { IBooksRepository } from '../../../../repositories/IBooksRepository';
 import { EntityRepository, Like, Repository } from 'typeorm';
 import { Book } from '../entities/book.entity';
 

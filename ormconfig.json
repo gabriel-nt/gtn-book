@@ -5,9 +5,9 @@
   "username": "postgres",
   "password": "postgres",
   "database": "library",
-  "entities": ["./src/**/**/entities/*.entity.{ts,js}"],
-  "migrations": ["./src/infra/typeorm/migrations/*.ts"],
+  "entities": ["./src/**/entities/*.entity.{ts,js}"],
+  "migrations": ["./src/infrastructure/typeorm/migrations/*.ts"],
   "cli": {
-    "migrationsDir": "./src/infra//typeorm/migrations"
+    "migrationsDir": "./src/infrastructure/typeorm/migrations"
   }
 }

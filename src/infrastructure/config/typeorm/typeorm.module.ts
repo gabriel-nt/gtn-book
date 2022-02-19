@@ -14,11 +14,11 @@ export const getTypeOrmModuleOptions = (
     password: config.getDatabasePassword(),
     database: config.getDatabaseName(),
     autoLoadEntities: true,
-    migrations: ['../../typeorm//migrations/*.ts'],
+    migrations: ['../../typeorm/migrations/*.ts'],
     cli: {
-      migrationsDir: '../../typeorm/typeorm/migrations',
+      migrationsDir: '../../typeorm/migrations',
     },
-    retryAttempts: 0,
+    retryAttempts: 1,
     // ssl: {
     //   rejectUnauthorized: false,
     // },

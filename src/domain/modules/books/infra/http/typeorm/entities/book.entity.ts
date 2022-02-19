@@ -7,7 +7,7 @@ import {
   PrimaryColumn,
 } from 'typeorm';
 
-import { Category } from 'domain/modules/categories/infra/typeorm/entities/category.entity';
+import { Category } from '../../../../../categories/infra/typeorm/entities/category.entity';
 import { randomUUID } from 'crypto';
 
 @Entity('books')
@@ -36,8 +36,15 @@ export class Book {
   @ManyToOne(() => Category)
   category: Category;
 
-  @Column()
-  additional_info: string;
+  @Column('jsonb', { nullable: true })
+  additional_info: {
+    isbn10: string;
+    isbn13: string;
+    language: string;
+    pageCount: number;
+    publisher: string;
+    published: number;
+  };
 
   @CreateDateColumn()
   created_at: Date;
