@@ -5,10 +5,15 @@ import { Category } from './infra/typeorm/entities/category.entity';
 import { CategoriesRepository } from './infra/typeorm/repositories/categories.repository';
 import { CreateCategoryService } from './services/createCategory.service';
 import { ListCategoriesService } from './services/listCategories.service';
+import { ListCategoryByTitleService } from './services/listCategoryByTitle.service';
 
 @Module({
   controllers: [CategoriesController],
   imports: [TypeOrmModule.forFeature([Category, CategoriesRepository])],
-  providers: [CreateCategoryService, ListCategoriesService],
+  providers: [
+    CreateCategoryService,
+    ListCategoriesService,
+    ListCategoryByTitleService,
+  ],
 })
 export class CategoriesModule {}
