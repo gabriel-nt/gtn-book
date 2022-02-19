@@ -2,7 +2,7 @@ import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
 
 import auth from '../../../../infrastructure/config/auth/auth';
-import { HttpException, Inject, Injectable } from '@nestjs/common';
+import { HttpException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { UsersRepository } from '../infra/typeorm/repositories/users.repository';
 import { IUsersRepository } from '../repositories/IUsersRepository';
