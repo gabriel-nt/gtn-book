@@ -1,15 +1,26 @@
-import { Body, Controller, Get, HttpCode, Post, Query } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  HttpCode,
+  Param,
+  Post,
+  Put,
+  Query,
+} from '@nestjs/common';
 
 import { Category } from '../../typeorm/entities/category.entity';
 import { ICreateCategoryDTO } from '../../../dtos/ICreateCategoryDTO';
 import { CreateCategoryService } from '../../../services/createCategory.service';
 import { ListCategoriesService } from '../../../services/listCategories.service';
+import { UpdateCategoryService } from '../../../services/updateCategory.service';
 import { ListCategoryByTitleService } from '../../../services/listCategoryByTitle.service';
 
 @Controller('/categories')
 export class CategoriesController {
   constructor(
     private createCategoryService: CreateCategoryService,
+    private updateCategoryService: UpdateCategoryService,
     private listCategoriesService: ListCategoriesService,
     private listCategoryByTitleService: ListCategoryByTitleService,
   ) {}
@@ -32,6 +43,17 @@ export class CategoriesController {
     }
 
     const response = await this.listCategoriesService.execute();
+
+    return response;
+  }
+
+  @Put('/:id')
+  @HttpCode(200)
+  async update(
+    @Param('id') id: string,
+    @Body() data: ICreateCategoryDTO,
+  ): Promise<Category> {
+    const response = await this.updateCategoryService.execute(id, data);
 
     return response;
   }

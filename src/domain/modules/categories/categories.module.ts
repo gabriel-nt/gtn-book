@@ -6,6 +6,7 @@ import { CategoriesRepository } from './infra/typeorm/repositories/categories.re
 import { CreateCategoryService } from './services/createCategory.service';
 import { ListCategoriesService } from './services/listCategories.service';
 import { ListCategoryByTitleService } from './services/listCategoryByTitle.service';
+import { UpdateCategoryService } from './services/updateCategory.service';
 
 @Module({
   controllers: [CategoriesController],
@@ -13,6 +14,7 @@ import { ListCategoryByTitleService } from './services/listCategoryByTitle.servi
   providers: [
     CreateCategoryService,
     ListCategoriesService,
+    UpdateCategoryService,
     ListCategoryByTitleService,
   ],
 })
