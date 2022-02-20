@@ -4,6 +4,7 @@ import { CategoriesController } from './infra/http/controllers/categories.contro
 import { Category } from './infra/typeorm/entities/category.entity';
 import { CategoriesRepository } from './infra/typeorm/repositories/categories.repository';
 import { CreateCategoryService } from './services/createCategory.service';
+import { DeleteCategoryService } from './services/deleteCategory.service';
 import { ListCategoriesService } from './services/listCategories.service';
 import { ListCategoryByTitleService } from './services/listCategoryByTitle.service';
 import { UpdateCategoryService } from './services/updateCategory.service';
@@ -15,6 +16,7 @@ import { UpdateCategoryService } from './services/updateCategory.service';
     CreateCategoryService,
     ListCategoriesService,
     UpdateCategoryService,
+    DeleteCategoryService,
     ListCategoryByTitleService,
   ],
 })

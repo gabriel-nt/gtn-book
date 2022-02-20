@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   HttpCode,
   Param,
@@ -15,6 +16,7 @@ import { CreateCategoryService } from '../../../services/createCategory.service'
 import { ListCategoriesService } from '../../../services/listCategories.service';
 import { UpdateCategoryService } from '../../../services/updateCategory.service';
 import { ListCategoryByTitleService } from '../../../services/listCategoryByTitle.service';
+import { DeleteCategoryService } from '../../../services/deleteCategory.service';
 
 @Controller('/categories')
 export class CategoriesController {
@@ -22,6 +24,7 @@ export class CategoriesController {
     private createCategoryService: CreateCategoryService,
     private updateCategoryService: UpdateCategoryService,
     private listCategoriesService: ListCategoriesService,
+    private deleteCategoryService: DeleteCategoryService,
     private listCategoryByTitleService: ListCategoryByTitleService,
   ) {}
 
@@ -56,5 +59,11 @@ export class CategoriesController {
     const response = await this.updateCategoryService.execute(id, data);
 
     return response;
+  }
+
+  @Delete('/:id')
+  @HttpCode(204)
+  async delete(@Param('id') id: string): Promise<void> {
+    await this.deleteCategoryService.execute(id);
   }
 }

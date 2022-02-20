@@ -54,4 +54,8 @@ export class CategoriesRepository
 
     return category;
   }
+
+  async deleteCategory(id: string): Promise<void> {
+    await this.delete(id);
+  }
 }
