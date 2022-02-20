@@ -15,8 +15,8 @@ import { ICreateCategoryDTO } from '../../../dtos/ICreateCategoryDTO';
 import { CreateCategoryService } from '../../../services/createCategory.service';
 import { ListCategoriesService } from '../../../services/listCategories.service';
 import { UpdateCategoryService } from '../../../services/updateCategory.service';
-import { ListCategoryByTitleService } from '../../../services/listCategoryByTitle.service';
 import { DeleteCategoryService } from '../../../services/deleteCategory.service';
+import { ListCategoryByTitleService } from '../../../services/listCategoryByTitle.service';
 
 @Controller('/categories')
 export class CategoriesController {
