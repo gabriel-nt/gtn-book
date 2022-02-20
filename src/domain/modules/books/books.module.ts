@@ -7,6 +7,7 @@ import { CreateBookService } from './services/createBook.service';
 import { ListBooksService } from './services/listBooks.service';
 import { ListBooksByAuthorService } from './services/listBooksByAuthor.service';
 import { ListBooksByCategoryIdService } from './services/listBooksByCategoryId.service';
+import { UpdateBookService } from './services/updateBook.service';
 
 @Module({
   controllers: [BooksController],
@@ -14,6 +15,7 @@ import { ListBooksByCategoryIdService } from './services/listBooksByCategoryId.s
   providers: [
     CreateBookService,
     ListBooksService,
+    UpdateBookService,
     ListBooksByAuthorService,
     ListBooksByCategoryIdService,
   ],
