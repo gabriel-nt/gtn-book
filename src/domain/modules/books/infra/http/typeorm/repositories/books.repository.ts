@@ -1,11 +1,11 @@
 import { EntityRepository, Like, Repository } from 'typeorm';
 
 import { Book } from '../entities/book.entity';
+import { getPagination } from '../../../../../../utils';
 import { IListBooksDTO } from '../../../../dtos/IListBooksDTO';
 import { ICreateBookDTO } from '../../../../dtos/ICreateBookDTO';
 import { IPaginationDTO } from '../../../../dtos/IPaginationDTO';
 import { IBooksRepository } from '../../../../repositories/IBooksRepository';
-import { getPagination } from '../../../../../../utils';
 
 @EntityRepository(Book)
 export class BooksRepository

@@ -1,6 +1,6 @@
-import { ICreateBookDTO } from '../dtos/ICreateBookDTO';
 import { IListBooksDTO } from '../dtos/IListBooksDTO';
 import { IPaginationDTO } from '../dtos/IPaginationDTO';
+import { ICreateBookDTO } from '../dtos/ICreateBookDTO';
 import { Book } from '../infra/http/typeorm/entities/book.entity';
 
 export interface IBooksRepository {

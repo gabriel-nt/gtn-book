@@ -1,6 +1,7 @@
 import { hash } from 'bcryptjs';
-import { HttpException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { HttpException, Injectable } from '@nestjs/common';
+
 import { ICreateUserDTO } from '../dtos/ICreateUserDTO';
 import { IUsersRepository } from '../repositories/IUsersRepository';
 import { UsersRepository } from '../infra/typeorm/repositories/users.repository';

@@ -1,15 +1,15 @@
 import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
-
-import auth from '../../../../infrastructure/config/auth/auth';
-import { HttpException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { UsersRepository } from '../infra/typeorm/repositories/users.repository';
-import { IUsersRepository } from '../repositories/IUsersRepository';
-import { UsersTokensRepository } from '../infra/typeorm/repositories/usersTokens.repository';
-import { IUsersTokensRepository } from '../repositories/IUsersTokensRepository';
-import { IAuthenticateUserDTO } from '../dtos/IAuthenticateUserDTO';
+import { HttpException, Injectable } from '@nestjs/common';
+
 import { IResponse } from '../dtos/IResponseAuthenticate';
+import auth from '../../../../infrastructure/config/auth/auth';
+import { IUsersRepository } from '../repositories/IUsersRepository';
+import { IAuthenticateUserDTO } from '../dtos/IAuthenticateUserDTO';
+import { IUsersTokensRepository } from '../repositories/IUsersTokensRepository';
+import { UsersRepository } from '../infra/typeorm/repositories/users.repository';
+import { UsersTokensRepository } from '../infra/typeorm/repositories/usersTokens.repository';
 import { DayjsDateProvider } from '../../../../infrastructure/provider/DateProvider/implementations/DayjsDateProvider';
 
 @Injectable()

@@ -1,7 +1,8 @@
 import { EntityRepository, Repository } from 'typeorm';
+
+import { Category } from '../entities/category.entity';
 import { ICreateCategoryDTO } from '../../../dtos/ICreateCategoryDTO';
 import { ICategoriesRepository } from '../../../repositories/ICategoriesRepository';
-import { Category } from '../entities/category.entity';
 
 @EntityRepository(Category)
 export class CategoriesRepository

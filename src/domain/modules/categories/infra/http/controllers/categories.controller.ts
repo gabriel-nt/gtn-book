@@ -1,13 +1,13 @@
 import {
-  Body,
-  Controller,
-  Delete,
   Get,
-  HttpCode,
-  Param,
-  Post,
   Put,
+  Post,
+  Body,
+  Param,
   Query,
+  Delete,
+  HttpCode,
+  Controller,
 } from '@nestjs/common';
 
 import { Category } from '../../typeorm/entities/category.entity';

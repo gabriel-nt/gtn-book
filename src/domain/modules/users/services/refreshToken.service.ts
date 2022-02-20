@@ -1,13 +1,14 @@
-import { HttpException, Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
 import { sign, verify } from 'jsonwebtoken';
-import auth from '../../../../infrastructure/config/auth/auth';
-import { DayjsDateProvider } from '../../../../infrastructure/provider/DateProvider/implementations/DayjsDateProvider';
+import { InjectRepository } from '@nestjs/typeorm';
+import { HttpException, Injectable } from '@nestjs/common';
+
 import { IResponse } from '../dtos/IResponseAuthenticate';
-import { UsersRepository } from '../infra/typeorm/repositories/users.repository';
-import { UsersTokensRepository } from '../infra/typeorm/repositories/usersTokens.repository';
+import auth from '../../../../infrastructure/config/auth/auth';
 import { IUsersRepository } from '../repositories/IUsersRepository';
+import { UsersRepository } from '../infra/typeorm/repositories/users.repository';
 import { IUsersTokensRepository } from '../repositories/IUsersTokensRepository';
+import { UsersTokensRepository } from '../infra/typeorm/repositories/usersTokens.repository';
+import { DayjsDateProvider } from '../../../../infrastructure/provider/DateProvider/implementations/DayjsDateProvider';
 
 interface IPayload {
   sub: string;

@@ -1,7 +1,8 @@
-import { HttpException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { BooksRepository } from '../infra/http/typeorm/repositories/books.repository';
+import { HttpException, Injectable } from '@nestjs/common';
+
 import { IBooksRepository } from '../repositories/IBooksRepository';
+import { BooksRepository } from '../infra/http/typeorm/repositories/books.repository';
 
 @Injectable()
 export class DeleteBookService {

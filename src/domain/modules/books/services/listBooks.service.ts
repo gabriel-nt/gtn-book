@@ -1,9 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+
 import { IListBooksDTO } from '../dtos/IListBooksDTO';
 import { IPaginationDTO } from '../dtos/IPaginationDTO';
-import { BooksRepository } from '../infra/http/typeorm/repositories/books.repository';
 import { IBooksRepository } from '../repositories/IBooksRepository';
+import { BooksRepository } from '../infra/http/typeorm/repositories/books.repository';
 
 @Injectable()
 export class ListBooksService {

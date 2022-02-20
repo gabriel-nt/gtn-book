@@ -1,9 +1,10 @@
-import { HttpException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { HttpException, Injectable } from '@nestjs/common';
+
 import { ICreateBookDTO } from '../dtos/ICreateBookDTO';
 import { Book } from '../infra/http/typeorm/entities/book.entity';
-import { BooksRepository } from '../infra/http/typeorm/repositories/books.repository';
 import { IBooksRepository } from '../repositories/IBooksRepository';
+import { BooksRepository } from '../infra/http/typeorm/repositories/books.repository';
 
 @Injectable()
 export class UpdateBookService {
