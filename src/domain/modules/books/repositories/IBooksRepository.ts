@@ -17,4 +17,5 @@ export interface IBooksRepository {
     author: string,
     pagination: IPaginationDTO,
   ): Promise<IListBooksDTO>;
+  deleteBook(id: string): Promise<void>;
 }

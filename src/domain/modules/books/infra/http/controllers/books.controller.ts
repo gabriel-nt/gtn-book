@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   HttpCode,
   Param,
@@ -8,15 +9,17 @@ import {
   Put,
   Query,
 } from '@nestjs/common';
-import { CreateBookService } from '../../../services/createBook.service';
-import { ICreateBookDTO } from '../../../dtos/ICreateBookDTO';
+
 import { Book } from '../typeorm/entities/book.entity';
-import { ListBooksService } from '../../../services/listBooks.service';
-import { ListBooksByCategoryIdService } from '../../../services/listBooksByCategoryId.service';
-import { ListBooksByAuthorService } from '../../../services/listBooksByAuthor.service';
 import { IListBooksDTO } from '../../../dtos/IListBooksDTO';
+import { ICreateBookDTO } from '../../../dtos/ICreateBookDTO';
 import { IQueryListBooksDTO } from '../../../dtos/IQueryListBooksDTO';
+import { ListBooksService } from '../../../services/listBooks.service';
+import { CreateBookService } from '../../../services/createBook.service';
 import { UpdateBookService } from '../../../services/updateBook.service';
+import { DeleteBookService } from '../../../services/deleteBook.service';
+import { ListBooksByAuthorService } from '../../../services/listBooksByAuthor.service';
+import { ListBooksByCategoryIdService } from '../../../services/listBooksByCategoryId.service';
 
 @Controller('books')
 export class BooksController {
@@ -24,6 +27,7 @@ export class BooksController {
     private createBookService: CreateBookService,
     private listBooksService: ListBooksService,
     private updateBookService: UpdateBookService,
+    private deleteBookService: DeleteBookService,
     private listBooksByAuthorService: ListBooksByAuthorService,
     private listBooksByCategoryService: ListBooksByCategoryIdService,
   ) {}
@@ -78,5 +82,11 @@ export class BooksController {
     });
 
     return response;
+  }
+
+  @Delete('/:id')
+  @HttpCode(204)
+  async delete(@Param('id') id: string): Promise<void> {
+    await this.deleteBookService.execute(id);
   }
 }

@@ -130,4 +130,8 @@ export class BooksRepository
 
     return book;
   }
+
+  async deleteBook(id: string): Promise<void> {
+    await this.delete(id);
+  }
 }
