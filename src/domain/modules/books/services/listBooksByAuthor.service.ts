@@ -1,8 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Book } from '../infra/http/typeorm/entities/book.entity';
-import { BooksRepository } from '../infra/http/typeorm/repositories/books.repository';
+import { IListBooksDTO } from '../dtos/IListBooksDTO';
+import { IPaginationDTO } from '../dtos/IPaginationDTO';
 import { IBooksRepository } from '../repositories/IBooksRepository';
+import { BooksRepository } from '../infra/http/typeorm/repositories/books.repository';
 
 @Injectable()
 export class ListBooksByAuthorService {
@@ -11,8 +12,11 @@ export class ListBooksByAuthorService {
     private booksRepository: IBooksRepository,
   ) {}
 
-  async execute(author: string): Promise<Book[]> {
-    const books = await this.booksRepository.findByAuthor(author);
+  async execute(
+    author: string,
+    pagination: IPaginationDTO,
+  ): Promise<IListBooksDTO> {
+    const books = await this.booksRepository.findByAuthor(author, pagination);
 
     return books;
   }

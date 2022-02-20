@@ -1,19 +1,28 @@
-import { ICreateBookDTO } from '../../../../dtos/ICreateBookDTO';
-import { IBooksRepository } from '../../../../repositories/IBooksRepository';
 import { EntityRepository, Like, Repository } from 'typeorm';
+
 import { Book } from '../entities/book.entity';
+import { IListBooksDTO } from '../../../../dtos/IListBooksDTO';
+import { ICreateBookDTO } from '../../../../dtos/ICreateBookDTO';
+import { IPaginationDTO } from '../../../../dtos/IPaginationDTO';
+import { IBooksRepository } from '../../../../repositories/IBooksRepository';
+import { getPagination } from '../../../../../../utils';
 
 @EntityRepository(Book)
 export class BooksRepository
   extends Repository<Book>
   implements IBooksRepository
 {
-  async findAll(): Promise<Book[]> {
-    const books = await this.find({
+  async findAll({ page, amount }: IPaginationDTO): Promise<IListBooksDTO> {
+    const [books, count] = await this.findAndCount({
       relations: ['category'],
+      take: amount,
+      skip: page === 1 ? 0 : page * amount,
     });
 
-    return books;
+    return {
+      books,
+      ...getPagination({ page, amount, count }),
+    };
   }
 
   async findById(id: string): Promise<Book> {
@@ -35,26 +44,42 @@ export class BooksRepository
     return book;
   }
 
-  async findByCategoryId(category_id: string): Promise<Book[]> {
-    const books = await this.find({
+  async findByCategoryId(
+    category_id: string,
+    { page, amount }: IPaginationDTO,
+  ): Promise<IListBooksDTO> {
+    const [books, count] = await this.findAndCount({
       where: {
         category_id,
       },
       relations: ['category'],
+      take: amount,
+      skip: page === 1 ? 0 : page * amount,
     });
 
-    return books;
+    return {
+      books,
+      ...getPagination({ page, amount, count }),
+    };
   }
 
-  async findByAuthor(author: string): Promise<Book[]> {
-    const books = await this.find({
+  async findByAuthor(
+    author: string,
+    { page, amount }: IPaginationDTO,
+  ): Promise<IListBooksDTO> {
+    const [books, count] = await this.findAndCount({
       where: {
         authors: Like(`%${author}%`),
       },
       relations: ['category'],
+      take: amount,
+      skip: page === 1 ? 0 : page * amount,
     });
 
-    return books;
+    return {
+      books,
+      ...getPagination({ page, amount, count }),
+    };
   }
 
   async createBook({
