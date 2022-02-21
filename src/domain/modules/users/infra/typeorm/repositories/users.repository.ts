@@ -25,19 +25,26 @@ export class UsersRepository
     return user;
   }
 
-  async createUser({
-    email,
-    name,
-    password,
-    id,
-  }: ICreateUserDTO): Promise<void> {
+  async createUser({ email, name, password }: ICreateUserDTO): Promise<void> {
     const user = this.create({
       name,
       email,
       password,
-      id,
     });
 
     await this.save(user);
+  }
+
+  async updateUser(id: string, { email, name }: ICreateUserDTO): Promise<User> {
+    const user = await this.findOne(id);
+
+    Object.assign(user, {
+      email,
+      name,
+    });
+
+    await this.save(user);
+
+    return user;
   }
 }

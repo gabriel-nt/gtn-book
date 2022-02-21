@@ -10,6 +10,7 @@ import { UsersRepository } from './infra/typeorm/repositories/users.repository';
 import { DateProviderModule } from '../../../infrastructure/provider/DateProvider';
 import { AuthenticateController } from './infra/http/controllers/authenticate.controller';
 import { UsersTokensRepository } from './infra/typeorm/repositories/usersTokens.repository';
+import { UpdateUserService } from './services/updateUser.service';
 
 @Module({
   imports: [
@@ -17,6 +18,11 @@ import { UsersTokensRepository } from './infra/typeorm/repositories/usersTokens.
     TypeOrmModule.forFeature([User, UsersRepository, UsersTokensRepository]),
   ],
   controllers: [UsersController, AuthenticateController],
-  providers: [CreateUserService, AuthenticateUserService, RefreshTokenService],
+  providers: [
+    CreateUserService,
+    UpdateUserService,
+    AuthenticateUserService,
+    RefreshTokenService,
+  ],
 })
 export class UsersModule {}

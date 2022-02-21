@@ -11,6 +11,8 @@ import { TypeOrmConfigModule } from './infrastructure/config/typeorm/typeorm.mod
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(AuthMiddleware).forRoutes('/books', '/categories');
+    consumer
+      .apply(AuthMiddleware)
+      .forRoutes('/users/*', '/books', '/categories');
   }
 }
