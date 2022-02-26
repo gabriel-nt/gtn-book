@@ -1,1 +1,1 @@
-web: yarn && yarn start:prod
+web: yarn && yarn build && yarn start:prod

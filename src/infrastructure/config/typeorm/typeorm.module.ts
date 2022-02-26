@@ -19,9 +19,9 @@ export const getTypeOrmModuleOptions = (
       migrationsDir: '../../typeorm/migrations',
     },
     retryAttempts: 1,
-    // ssl: {
-    //   rejectUnauthorized: false,
-    // },
+    ssl: {
+      rejectUnauthorized: false,
+    },
   } as TypeOrmModuleOptions);
 
 @Module({
