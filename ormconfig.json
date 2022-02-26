@@ -9,5 +9,8 @@
   "migrations": ["./src/infrastructure/typeorm/migrations/*.ts"],
   "cli": {
     "migrationsDir": "./src/infrastructure/typeorm/migrations"
+  },
+  "ssl": {
+    "rejectUnauthorized": false
   }
 }
