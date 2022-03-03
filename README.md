@@ -1,73 +1,115 @@
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
+  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="190" alt="Nest Logo" /></a>
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+<h1 align="center">
+    🚀 Library Book
+</h1>
+<p align="center">Backend da aplicação Ioasys Book</p>
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
+<p align="center">
+  <img src="https://img.shields.io/static/v1?label=node&message=14.15.1&color=green&logo=node.js" />
+  <img src="https://img.shields.io/static/v1?label=typescript&message=4.0.3&color=blue&logo=typescript" />
+  <img src="https://img.shields.io/badge/last%20commit-october-orange" />
+  <img src="https://img.shields.io/badge/license-MIT-success"/>
 </p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+<p align="center">
+  <a href="#-features">Features</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-pré-requisitos">Pré-Requisitos</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-rodando-o-back-end-servidor">Backend</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-bibliotecas">Bibliotecas</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-licença">Lincença</a>
+</p>
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+<h3 align="center"> 
+🚧  Finalizado  🚧
+</h3>
 
-## Installation
+### 📌 Sobre 
+Aplicação para estudos do framework NestJS, e para criação do backend do front da aplicação [Ioasys Book](https://github.com/gabriel-nt/ioasys-books)
+
+### 📎 Features
+
+#### Livros
+- [x] Criação de livro
+- [x] Deleção de um livro
+- [x] Atualização de um livro
+- [x] Listagem de livros, com paginação e filtros
+
+#### Categorias
+- [x] Criação de categoria
+- [x] Deleção de um categoria
+- [x] Atualização de um categoria
+- [x] Listagem de categorias com filtro
+
+#### Usuários
+- [x] Autenticação
+- [x] Criação de Perfil
+- [x] Atualização de Perfil
+
+### ⚙ Pré-requisitos
+
+Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
+[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/) e/ou [Yarn](https://https://yarnpkg.com/)
+Também, será necessário ter o [Docker](https://www.docker.com/) instalado e configurado em sua máquina.
+Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
+
+### 🎲 Rodando o Back End (servidor)
 
 ```bash
-$ npm install
+# Instale as dependências
+$ npm install ou yarn
+
+# Rode as migrations
+$ yarn typeorm migration:run
+
+# Execute a aplicação em modo de desenvolvimento
+$ yarn start:dev ou npm run start:dev
+
+# Execute a aplicação em modo de produção
+$ yarn start:prod ou npm run start:prod
+
+# O servidor inciará na porta:3000 - acesse <http://localhost:300>
 ```
+* Obs: Para executar os backend, crie um banco de dados.
 
-## Running the app
+### 🚀 Tecnologias
 
-```bash
-# development
-$ npm run start
+Esse projeto foi desenvolvido com as seguintes tecnologias:
 
-# watch mode
-$ npm run start:dev
+- NestJs
+- TypeScript
+- Postgres
 
-# production mode
-$ npm run start:prod
-```
+### 📕 Bibliotecas
 
-## Test
+Esse projeto foi desenvolvido com o auxílio das seguintes libs:
 
-```bash
-# unit tests
-$ npm run test
+- Express
+- TypeORM
+- jwt
+- dayjs
 
-# e2e tests
-$ npm run test:e2e
+### 📙 Arquitetura do Projeto
 
-# test coverage
-$ npm run test:cov
-```
+Para uma melhorar estrutura de projetos utilizamos das seguintes fundamentos:
 
-## Support
+- DDD
+- SOLID
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+###  📘 Padrão de Código
 
-## Stay in touch
+Para padronizar a escrita do código, utilizamos as seguinte ferramentas:
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+- Eslint
+- Prettier
+- EditorConfig
 
-## License
+### 📝 Licença
 
-Nest is [MIT licensed](LICENSE).
+Esse projeto está sob a licença MIT.
+
+<hr/>
+
+Feito por Gabriel Teixeira
