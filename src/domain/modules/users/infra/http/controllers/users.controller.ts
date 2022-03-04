@@ -5,6 +5,7 @@ import { ICreateUserDTO } from '../../../dtos/ICreateUserDTO';
 import { IUpdateUserDTO } from '../../../dtos/IUpdateUserDTO';
 import { CreateUserService } from '../../../services/createUser.service';
 import { UpdateUserService } from '../../../services/updateUser.service';
+import { ApiTags } from '@nestjs/swagger';
 
 @Controller('users')
 export class UsersController {
@@ -15,12 +16,14 @@ export class UsersController {
 
   @Post('/')
   @HttpCode(201)
+  @ApiTags('users')
   async create(@Body() data: ICreateUserDTO): Promise<void> {
     await this.createUserService.execute(data);
   }
 
   @Put('/:id')
   @HttpCode(200)
+  @ApiTags('users')
   async update(
     @Param('id') id: string,
     @Body() data: IUpdateUserDTO,

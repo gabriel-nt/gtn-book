@@ -5,6 +5,7 @@ import { IResponse } from '../../../dtos/IResponseAuthenticate';
 import { IAuthenticateUserDTO } from '../../../dtos/IAuthenticateUserDTO';
 import { RefreshTokenService } from '../../../services/refreshToken.service';
 import { AuthenticateUserService } from '../../../services/authenticateUser.service';
+import { ApiTags } from '@nestjs/swagger';
 
 @Controller('sessions')
 export class AuthenticateController {
@@ -15,6 +16,7 @@ export class AuthenticateController {
 
   @Post('/')
   @HttpCode(200)
+  @ApiTags('sessions')
   async create(@Body() data: IAuthenticateUserDTO): Promise<IResponse> {
     const response = await this.authenticateUserService.execute(data);
 
@@ -23,6 +25,7 @@ export class AuthenticateController {
 
   @Post('/refresh-token')
   @HttpCode(200)
+  @ApiTags('sessions')
   async generateRefreshToken(@Req() request: Request): Promise<IResponse> {
     const token =
       request.body.token ||

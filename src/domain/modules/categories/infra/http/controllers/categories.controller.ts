@@ -17,6 +17,7 @@ import { ListCategoriesService } from '../../../services/listCategories.service'
 import { UpdateCategoryService } from '../../../services/updateCategory.service';
 import { DeleteCategoryService } from '../../../services/deleteCategory.service';
 import { ListCategoryByTitleService } from '../../../services/listCategoryByTitle.service';
+import { ApiTags } from '@nestjs/swagger';
 
 @Controller('/categories')
 export class CategoriesController {
@@ -30,6 +31,7 @@ export class CategoriesController {
 
   @Post('/')
   @HttpCode(201)
+  @ApiTags('categories')
   async create(@Body() data: ICreateCategoryDTO): Promise<Category> {
     const response = await this.createCategoryService.execute(data);
 
@@ -38,6 +40,7 @@ export class CategoriesController {
 
   @Get('/')
   @HttpCode(200)
+  @ApiTags('categories')
   async list(@Query('title') title?: string): Promise<Category[] | Category> {
     if (title) {
       const response = await this.listCategoryByTitleService.execute(title);
@@ -52,6 +55,7 @@ export class CategoriesController {
 
   @Put('/:id')
   @HttpCode(200)
+  @ApiTags('categories')
   async update(
     @Param('id') id: string,
     @Body() data: ICreateCategoryDTO,
@@ -63,6 +67,7 @@ export class CategoriesController {
 
   @Delete('/:id')
   @HttpCode(204)
+  @ApiTags('categories')
   async delete(@Param('id') id: string): Promise<void> {
     await this.deleteCategoryService.execute(id);
   }

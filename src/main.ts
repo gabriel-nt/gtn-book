@@ -1,5 +1,6 @@
 import { ValidationPipe } from '@nestjs/common';
 import { HttpAdapterHost, NestFactory } from '@nestjs/core';
+import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { NestExpressApplication } from '@nestjs/platform-express';
 
 import { AppModule } from './app.module';
@@ -11,6 +12,15 @@ async function bootstrap() {
 
   const httpAdapter = app.get(HttpAdapterHost);
   app.useGlobalFilters(new AllExceptionsFilter(httpAdapter));
+
+  const config = new DocumentBuilder()
+    .setTitle('Library Books')
+    .setDescription('The library books API')
+    .setVersion('1.0')
+    .build();
+
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('api', app, document);
 
   await app.listen(process.env.PORT || 3000);
 }

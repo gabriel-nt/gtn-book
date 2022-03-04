@@ -20,6 +20,7 @@ import { UpdateBookService } from '../../../services/updateBook.service';
 import { DeleteBookService } from '../../../services/deleteBook.service';
 import { ListBooksByAuthorService } from '../../../services/listBooksByAuthor.service';
 import { ListBooksByCategoryIdService } from '../../../services/listBooksByCategoryId.service';
+import { ApiTags } from '@nestjs/swagger';
 
 @Controller('books')
 export class BooksController {
@@ -34,6 +35,7 @@ export class BooksController {
 
   @Post('/')
   @HttpCode(201)
+  @ApiTags('books')
   async create(@Body() data: ICreateBookDTO): Promise<Book> {
     const response = await this.createBookService.execute(data);
 
@@ -42,6 +44,7 @@ export class BooksController {
 
   @Put('/:id')
   @HttpCode(200)
+  @ApiTags('books')
   async update(
     @Param('id') id: string,
     @Body() data: ICreateBookDTO,
@@ -52,6 +55,7 @@ export class BooksController {
 
   @Get('/')
   @HttpCode(200)
+  @ApiTags('books')
   async list(@Query() params: IQueryListBooksDTO): Promise<IListBooksDTO> {
     const { category_id, amount, author, page } = params;
 
@@ -86,6 +90,7 @@ export class BooksController {
 
   @Delete('/:id')
   @HttpCode(204)
+  @ApiTags('books')
   async delete(@Param('id') id: string): Promise<void> {
     await this.deleteBookService.execute(id);
   }
