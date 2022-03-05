@@ -20,7 +20,7 @@ import { UpdateBookService } from '../../../services/updateBook.service';
 import { DeleteBookService } from '../../../services/deleteBook.service';
 import { ListBooksByAuthorService } from '../../../services/listBooksByAuthor.service';
 import { ListBooksByCategoryIdService } from '../../../services/listBooksByCategoryId.service';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 
 @Controller('books')
 export class BooksController {
@@ -36,6 +36,10 @@ export class BooksController {
   @Post('/')
   @HttpCode(201)
   @ApiTags('books')
+  @ApiCreatedResponse({
+    description: 'The book has been successfully created.',
+    type: Book,
+  })
   async create(@Body() data: ICreateBookDTO): Promise<Book> {
     const response = await this.createBookService.execute(data);
 
@@ -56,6 +60,9 @@ export class BooksController {
   @Get('/')
   @HttpCode(200)
   @ApiTags('books')
+  @ApiOkResponse({
+    type: IListBooksDTO,
+  })
   async list(@Query() params: IQueryListBooksDTO): Promise<IListBooksDTO> {
     const { category_id, amount, author, page } = params;
 

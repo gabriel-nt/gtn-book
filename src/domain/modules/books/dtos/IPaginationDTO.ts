@@ -1,4 +1,4 @@
-export interface IPaginationDTO {
+export class IPaginationDTO {
   amount: number;
   page: number;
 }
