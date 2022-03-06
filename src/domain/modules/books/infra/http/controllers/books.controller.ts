@@ -10,6 +10,13 @@ import {
   Query,
 } from '@nestjs/common';
 
+import {
+  ApiCreatedResponse,
+  ApiNoContentResponse,
+  ApiOkResponse,
+  ApiTags,
+} from '@nestjs/swagger';
+
 import { Book } from '../typeorm/entities/book.entity';
 import { IListBooksDTO } from '../../../dtos/IListBooksDTO';
 import { ICreateBookDTO } from '../../../dtos/ICreateBookDTO';
@@ -20,7 +27,6 @@ import { UpdateBookService } from '../../../services/updateBook.service';
 import { DeleteBookService } from '../../../services/deleteBook.service';
 import { ListBooksByAuthorService } from '../../../services/listBooksByAuthor.service';
 import { ListBooksByCategoryIdService } from '../../../services/listBooksByCategoryId.service';
-import { ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 
 @Controller('books')
 export class BooksController {
@@ -49,6 +55,10 @@ export class BooksController {
   @Put('/:id')
   @HttpCode(200)
   @ApiTags('books')
+  @ApiOkResponse({
+    description: 'The book has been successfully updated.',
+    type: Book,
+  })
   async update(
     @Param('id') id: string,
     @Body() data: ICreateBookDTO,
@@ -98,6 +108,9 @@ export class BooksController {
   @Delete('/:id')
   @HttpCode(204)
   @ApiTags('books')
+  @ApiNoContentResponse({
+    description: 'The book has been successfully deleted.',
+  })
   async delete(@Param('id') id: string): Promise<void> {
     await this.deleteBookService.execute(id);
   }

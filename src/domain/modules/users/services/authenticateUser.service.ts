@@ -3,10 +3,10 @@ import { sign } from 'jsonwebtoken';
 import { InjectRepository } from '@nestjs/typeorm';
 import { HttpException, Injectable } from '@nestjs/common';
 
-import { IResponse } from '../dtos/IResponseAuthenticate';
 import auth from '../../../../infrastructure/config/auth/auth';
-import { IUsersRepository } from '../repositories/IUsersRepository';
 import { IAuthenticateUserDTO } from '../dtos/IAuthenticateUserDTO';
+import { IUsersRepository } from '../repositories/IUsersRepository';
+import { IAuthenticateUserResponse } from '../dtos/IAuthenticateUserResponse';
 import { IUsersTokensRepository } from '../repositories/IUsersTokensRepository';
 import { UsersRepository } from '../infra/typeorm/repositories/users.repository';
 import { UsersTokensRepository } from '../infra/typeorm/repositories/usersTokens.repository';
@@ -24,7 +24,10 @@ class AuthenticateUserService {
     private dateProvider: DayjsDateProvider,
   ) {}
 
-  async execute({ email, password }: IAuthenticateUserDTO): Promise<IResponse> {
+  async execute({
+    email,
+    password,
+  }: IAuthenticateUserDTO): Promise<IAuthenticateUserResponse> {
     const user = await this.usersRepository.findByEmail(email);
     const {
       secret_token,

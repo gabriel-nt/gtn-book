@@ -1,11 +1,11 @@
 import { Request } from 'express';
 import { Body, Controller, HttpCode, Post, Req } from '@nestjs/common';
 
-import { IResponse } from '../../../dtos/IResponseAuthenticate';
+import { IAuthenticateUserResponse } from '../../../dtos/IAuthenticateUserResponse';
 import { IAuthenticateUserDTO } from '../../../dtos/IAuthenticateUserDTO';
 import { RefreshTokenService } from '../../../services/refreshToken.service';
 import { AuthenticateUserService } from '../../../services/authenticateUser.service';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiHeader, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 
 @Controller('sessions')
 export class AuthenticateController {
@@ -17,7 +17,12 @@ export class AuthenticateController {
   @Post('/')
   @HttpCode(200)
   @ApiTags('sessions')
-  async create(@Body() data: IAuthenticateUserDTO): Promise<IResponse> {
+  @ApiOkResponse({
+    type: IAuthenticateUserResponse,
+  })
+  async create(
+    @Body() data: IAuthenticateUserDTO,
+  ): Promise<IAuthenticateUserResponse> {
     const response = await this.authenticateUserService.execute(data);
 
     return response;
@@ -26,7 +31,17 @@ export class AuthenticateController {
   @Post('/refresh-token')
   @HttpCode(200)
   @ApiTags('sessions')
-  async generateRefreshToken(@Req() request: Request): Promise<IResponse> {
+  @ApiOkResponse({
+    type: IAuthenticateUserResponse,
+  })
+  @ApiHeader({
+    name: 'x-access-token',
+    description: 'Access token',
+    required: false,
+  })
+  async generateRefreshToken(
+    @Req() request: Request,
+  ): Promise<IAuthenticateUserResponse> {
     const token =
       request.body.token ||
       request.query.token ||

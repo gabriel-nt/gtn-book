@@ -2,9 +2,9 @@ import { sign, verify } from 'jsonwebtoken';
 import { InjectRepository } from '@nestjs/typeorm';
 import { HttpException, Injectable } from '@nestjs/common';
 
-import { IResponse } from '../dtos/IResponseAuthenticate';
 import auth from '../../../../infrastructure/config/auth/auth';
 import { IUsersRepository } from '../repositories/IUsersRepository';
+import { IAuthenticateUserResponse } from '../dtos/IAuthenticateUserResponse';
 import { UsersRepository } from '../infra/typeorm/repositories/users.repository';
 import { IUsersTokensRepository } from '../repositories/IUsersTokensRepository';
 import { UsersTokensRepository } from '../infra/typeorm/repositories/usersTokens.repository';
@@ -27,7 +27,7 @@ class RefreshTokenService {
     private dateProvider: DayjsDateProvider,
   ) {}
 
-  async execute(token: string): Promise<IResponse> {
+  async execute(token: string): Promise<IAuthenticateUserResponse> {
     const { email, sub: user_id } = verify(
       token,
       auth.secret_refresh_token,
