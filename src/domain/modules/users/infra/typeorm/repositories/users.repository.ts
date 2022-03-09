@@ -25,7 +25,7 @@ export class UsersRepository
     return user;
   }
 
-  async createUser({ email, name, password }: ICreateUserDTO): Promise<void> {
+  async createUser({ email, name, password }: ICreateUserDTO): Promise<User> {
     const user = this.create({
       name,
       email,
@@ -33,6 +33,8 @@ export class UsersRepository
     });
 
     await this.save(user);
+
+    return user;
   }
 
   async updateUser(id: string, { email, name }: ICreateUserDTO): Promise<User> {

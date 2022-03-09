@@ -11,12 +11,12 @@ import {
 } from '@nestjs/common';
 
 import {
+  ApiTags,
+  ApiQuery,
+  getSchemaPath,
+  ApiOkResponse,
   ApiCreatedResponse,
   ApiNoContentResponse,
-  ApiOkResponse,
-  ApiQuery,
-  ApiTags,
-  getSchemaPath,
 } from '@nestjs/swagger';
 
 import { Category } from '../../typeorm/entities/category.entity';

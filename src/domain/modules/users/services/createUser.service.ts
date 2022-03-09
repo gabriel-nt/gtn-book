@@ -5,6 +5,7 @@ import { HttpException, Injectable } from '@nestjs/common';
 import { ICreateUserDTO } from '../dtos/ICreateUserDTO';
 import { IUsersRepository } from '../repositories/IUsersRepository';
 import { UsersRepository } from '../infra/typeorm/repositories/users.repository';
+import { User } from '../infra/typeorm/entities/user.entity';
 
 @Injectable()
 export class CreateUserService {
@@ -13,7 +14,7 @@ export class CreateUserService {
     private usersRepository: IUsersRepository,
   ) {}
 
-  async execute({ email, name, password }: ICreateUserDTO): Promise<void> {
+  async execute({ email, name, password }: ICreateUserDTO): Promise<User> {
     const userAlreadyExists = await this.usersRepository.findByEmail(email);
 
     if (userAlreadyExists) {
@@ -22,10 +23,12 @@ export class CreateUserService {
 
     const passwordHash = await hash(password, 8);
 
-    await this.usersRepository.createUser({
+    const user = await this.usersRepository.createUser({
       email,
       name,
       password: passwordHash,
     });
+
+    return user;
   }
 }
