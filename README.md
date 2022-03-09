@@ -27,7 +27,7 @@
 </h3>
 
 ### 📌 Sobre 
-Aplicação para estudos do framework NestJS, e para criação do backend do front da aplicação [Ioasys Book](https://github.com/gabriel-nt/ioasys-books)
+Aplicação para estudos do framework NestJS, e para criação do backend do front da aplicação [Ioasys Book](https://github.com/gabriel-nt/ioasys-books).
 
 ### 📎 Features
 
