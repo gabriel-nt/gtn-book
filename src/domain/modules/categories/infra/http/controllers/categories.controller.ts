@@ -17,6 +17,7 @@ import {
   ApiOkResponse,
   ApiCreatedResponse,
   ApiNoContentResponse,
+  ApiBearerAuth,
 } from '@nestjs/swagger';
 
 import { Category } from '../../typeorm/entities/category.entity';
@@ -27,6 +28,7 @@ import { UpdateCategoryService } from '../../../services/updateCategory.service'
 import { DeleteCategoryService } from '../../../services/deleteCategory.service';
 import { ListCategoryByTitleService } from '../../../services/listCategoryByTitle.service';
 
+@ApiBearerAuth()
 @Controller('/categories')
 export class CategoriesController {
   constructor(

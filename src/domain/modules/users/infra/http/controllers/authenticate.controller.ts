@@ -7,6 +7,7 @@ import {
   ApiQuery,
   ApiHeader,
   ApiOkResponse,
+  ApiBearerAuth,
 } from '@nestjs/swagger';
 
 import { IRefreshTokenDTO } from '../../../dtos/IRefreshTokenDTO';
@@ -39,6 +40,7 @@ export class AuthenticateController {
 
   @Post('/refresh-token')
   @HttpCode(200)
+  @ApiBearerAuth()
   @ApiTags('sessions')
   @ApiOkResponse({
     type: IAuthenticateUserResponse,

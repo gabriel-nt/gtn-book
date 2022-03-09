@@ -14,6 +14,7 @@ async function bootstrap() {
   app.useGlobalFilters(new AllExceptionsFilter(httpAdapter));
 
   const config = new DocumentBuilder()
+    .addBearerAuth()
     .setTitle('Library Books')
     .setDescription('The library books API')
     .setVersion('1.0')

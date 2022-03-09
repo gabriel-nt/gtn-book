@@ -5,7 +5,12 @@ import { ICreateUserDTO } from '../../../dtos/ICreateUserDTO';
 import { IUpdateUserDTO } from '../../../dtos/IUpdateUserDTO';
 import { CreateUserService } from '../../../services/createUser.service';
 import { UpdateUserService } from '../../../services/updateUser.service';
-import { ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiCreatedResponse,
+  ApiOkResponse,
+  ApiTags,
+} from '@nestjs/swagger';
 
 @Controller('users')
 export class UsersController {
@@ -27,6 +32,7 @@ export class UsersController {
 
   @Put('/:id')
   @HttpCode(200)
+  @ApiBearerAuth()
   @ApiTags('users')
   @ApiOkResponse({
     type: User,

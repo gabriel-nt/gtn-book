@@ -11,10 +11,11 @@ import {
 } from '@nestjs/common';
 
 import {
+  ApiTags,
+  ApiBearerAuth,
+  ApiOkResponse,
   ApiCreatedResponse,
   ApiNoContentResponse,
-  ApiOkResponse,
-  ApiTags,
 } from '@nestjs/swagger';
 
 import { Book } from '../typeorm/entities/book.entity';
@@ -28,6 +29,7 @@ import { DeleteBookService } from '../../../services/deleteBook.service';
 import { ListBooksByAuthorService } from '../../../services/listBooksByAuthor.service';
 import { ListBooksByCategoryIdService } from '../../../services/listBooksByCategoryId.service';
 
+@ApiBearerAuth()
 @Controller('books')
 export class BooksController {
   constructor(
