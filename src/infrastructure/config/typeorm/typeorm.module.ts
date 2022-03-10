@@ -5,8 +5,8 @@ import { EnvironmentConfigService } from '../environment-config/environment-conf
 
 export const getTypeOrmModuleOptions = (
   config: EnvironmentConfigService,
-): TypeOrmModuleOptions =>
-  ({
+): TypeOrmModuleOptions => {
+  const ormOptions = {
     type: 'postgres',
     host: config.getDatabaseHost(),
     port: config.getDatabasePort(),
@@ -19,10 +19,18 @@ export const getTypeOrmModuleOptions = (
       migrationsDir: '../../typeorm/migrations',
     },
     retryAttempts: 1,
-    ssl: {
-      rejectUnauthorized: false,
-    },
-  } as TypeOrmModuleOptions);
+  } as TypeOrmModuleOptions;
+
+  if (config.getDatabaseHost() !== 'localhost') {
+    Object.assign(ormOptions, {
+      ssl: {
+        rejectUnauthorized: false,
+      },
+    });
+  }
+
+  return ormOptions;
+};
 
 @Module({
   imports: [
