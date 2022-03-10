@@ -74,6 +74,11 @@ $ yarn start:prod ou npm run start:prod
 ```
 * Obs: Para executar os backend, crie um banco de dados.
 
+### 🧾 Insomnia
+Para ter um exemplo das rotas para a nossa API, basta clicar no link abaixo:
+</br>
+<a href="https://insomnia.rest/run/?label=Library%20Book&uri=https%3A%2F%2Fgithub.com%2Fgabriel-nt%2Flibrary-nestjs%2Fblob%2Fmaster%2Fassets%2Fcolllection_insomnia" target="_blank"><img src="https://insomnia.rest/images/run.svg" alt="Run in Insomnia"></a>
+
 ### 🚀 Tecnologias
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
