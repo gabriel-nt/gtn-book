@@ -29,6 +29,9 @@
 ### 📌 Sobre 
 Aplicação para estudos do framework NestJS, e para criação do backend do front da aplicação [Ioasys Book](https://github.com/gabriel-nt/ioasys-books).
 
+### 📖 Documentação
+<img src="https://github.com/gabriel-nt/library-nestjs/blob/master/assets/swagger-documentation.png" alt="Documentation" />
+
 ### 📎 Features
 
 #### Livros
