@@ -90,6 +90,7 @@ Esse projeto foi desenvolvido com o auxílio das seguintes libs:
 - TypeORM
 - jwt
 - dayjs
+- swagger
 
 ### 📙 Arquitetura do Projeto
 
