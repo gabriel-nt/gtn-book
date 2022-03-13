@@ -3,7 +3,7 @@
 </p>
 
 <h1 align="center">
-    🚀 Library Book
+    🚀 GTN Book
 </h1>
 <p align="center">Backend da aplicação Ioasys Book</p>
 
