@@ -15,8 +15,8 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .addBearerAuth()
-    .setTitle('Library Books')
-    .setDescription('The library books API')
+    .setTitle('GTN Book')
+    .setDescription('The GTN book API')
     .setVersion('1.0')
     .build();
 
