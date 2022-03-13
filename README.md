@@ -61,6 +61,9 @@ Além disto é bom ter um editor para trabalhar com o código como [VSCode](http
 ### 🎲 Rodando o Back End (servidor)
 
 ```bash
+# Clone o repositório
+$ git clone https://github.com/gabriel-nt/gtn-book
+
 # Instale as dependências
 $ npm install ou yarn
 
